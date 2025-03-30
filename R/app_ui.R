@@ -8,20 +8,24 @@
 app_ui <- function(request) {
   tagList(
     page_navbar(
+    #  theme = bs_theme(brand = TRUE), # file must be at 1st dir level
+      theme = bs_theme(brand = here::here("inst", "app", "www", "_brand.yml")),
       title = "Shiny Survey",
-      nav_panel(title = "One", p("First page content.")),
       nav_panel(
-        title = "two",
-        shinyjs::useShinyjs(),
-        # Use the data loader UI
-        upload_ui("test_loader")$data_loader
-      ),
+        title = "One", p("First page content.")),
       nav_panel(
         title = "Status",
         # Elements moved into their own nav_panel
         h4("Data Status:"),
         # verbatimTextOutput("dataStatus"),
         upload_ui("test_loader")$feedback
+      ),
+      nav_item(
+        actionButton(
+          "uploadBtn",
+          "Upload File",
+          icon = icon("upload")
+        )
       ),
       # External resources should be in header
       header = golem_add_external_resources()
