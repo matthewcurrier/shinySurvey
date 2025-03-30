@@ -9,14 +9,12 @@ mod_upload_ui <- function(id) {
 
   list(
     data_loader = tagList(
-      # Combine file_loader and feedback into a single tagList
       uiOutput(ns("file_upload")),
       actionButton(ns("clear"), "Clear Data")
     ),
     feedback = tagList(
-      # Combine file_loader and feedback into a single tagList
-      verbatimTextOutput(ns("dataInfo")),  # Added ns() wrapper
-      tableOutput(ns("dataPreview"))       # Added ns() wrapper
+      verbatimTextOutput(ns("dataInfo")),
+      tableOutput(ns("dataPreview"))
     )
   )
 }
