@@ -1,8 +1,8 @@
 #' upload UI Function
 #'
-#' @description A shiny Module.
+#' @description A shiny ui module.
 #'
-#' @param id Internal parameters for {shiny}.
+#' @param id Internal parameters for shiny.
 #' @export
 upload_ui <- function(id) {
   ns <- NS(id)
@@ -18,7 +18,12 @@ upload_ui <- function(id) {
     )
   )
 }
-
+#' upload Server Function
+#'
+#' @description A shiny server module.
+#'
+#' @param id Internal parameters for shiny.
+#' @export
 #' @export
 upload_server <- function(id){
   moduleServer(id, function(input, output, session) {

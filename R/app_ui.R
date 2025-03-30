@@ -4,7 +4,6 @@
 #'     DO NOT REMOVE.
 #' @import shiny
 #' @import bslib
-#' @import shinyjs
 #' @noRd
 app_ui <- function(request) {
   tagList(
@@ -13,7 +12,7 @@ app_ui <- function(request) {
       nav_panel(title = "One", p("First page content.")),
       nav_panel(
         title = "two",
-        useShinyjs(),
+        shinyjs::useShinyjs(),
         # Use the data loader UI
         upload_ui("test_loader")$data_loader
       ),
