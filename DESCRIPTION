@@ -6,7 +6,7 @@ Authors@R:
            family = "Currier",
            role = c("aut", "cre"),
            email = "your@email.com")
-Description: What the package does (one paragraph).
+Description: It's used to upload and explore .sav files.
 License: MIT + file LICENSE
 Imports: 
     bslib,
