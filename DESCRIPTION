@@ -1,9 +1,9 @@
 Package: shinySurvey
-Title: An Amazing Shiny App
+Title: A shiny app for exploring SPSS files
 Version: 0.0.0.9001
 Authors@R: 
-    person(given = "firstname",
-           family = "lastname",
+    person(given = "Matthew",
+           family = "Currier",
            role = c("aut", "cre"),
            email = "your@email.com")
 Description: What the package does (one paragraph).
