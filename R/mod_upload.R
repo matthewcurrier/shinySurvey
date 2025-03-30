@@ -28,7 +28,7 @@ upload_ui <- function(id) {
 upload_server <- function(id){
   moduleServer(id, function(input, output, session) {
     # Initialize reactive values
-    data <- reactiveVal(NULL)
+    dataset <- reactiveVal(NULL)
     fileReset <- reactiveVal(0)
 
     # Render file input
@@ -55,7 +55,7 @@ upload_server <- function(id){
           return()
         }
 
-        data(new_data)
+        dataset(new_data)
         showNotification("Data loaded successfully", type = "message")
       }, error = function(e) {
         showNotification(
@@ -68,14 +68,14 @@ upload_server <- function(id){
 
     # Handle clear button
     observeEvent(input$clear, {
-      data(NULL)
+      dataset(NULL)
       fileReset(fileReset() + 1)
       showNotification("Data has been cleared", type = "message")
     })
 
     # Update data preview and info
     observe({
-      current_data <- data()
+      current_data <- dataset()
 
       output$dataInfo <- renderPrint({
         req(current_data)
@@ -89,13 +89,13 @@ upload_server <- function(id){
 
       output$dataPreview <- renderTable({
         req(current_data)
-        head(current_data, 5)
+        utils::head(current_data, 5)
       })
     })
 
     # Return validated data
     return(reactive({
-      current_data <- data()
+      current_data <- dataset()
       validate(
         need(current_data, "Please upload a data file."),
         need(all(c("AGE", "AGECAT", "PARTYLN") %in% names(current_data)),
