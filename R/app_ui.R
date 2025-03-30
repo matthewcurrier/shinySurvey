@@ -2,15 +2,17 @@
 #'
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
-#' @import shiny
+#' @import shiny, bslib
 #' @noRd
 app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      golem::golem_welcome_page() # Remove this line to start building your UI
+    page_navbar(
+      title = "Shiny Survey",
+      nav_panel(title = "One", p("First page content."),
+                golem::golem_welcome_page())
     )
   )
 }
