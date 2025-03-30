@@ -4,7 +4,7 @@
 #'
 #' @param id Internal parameters for {shiny}.
 #' @export
-mod_upload_ui <- function(id) {
+upload_ui <- function(id) {
   ns <- NS(id)
 
   list(
@@ -20,7 +20,7 @@ mod_upload_ui <- function(id) {
 }
 
 #' @export
-mod_upload_server <- function(id){
+upload_server <- function(id){
   moduleServer(id, function(input, output, session) {
     # Initialize reactive values
     data <- reactiveVal(NULL)

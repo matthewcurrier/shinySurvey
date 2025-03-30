@@ -2,17 +2,30 @@
 #'
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
-#' @import shiny, bslib
+#' @import shiny
+#' @import bslib
+#' @import shinyjs
 #' @noRd
 app_ui <- function(request) {
   tagList(
-    # Leave this function for adding external resources
-    golem_add_external_resources(),
-    # Your application UI logic
     page_navbar(
       title = "Shiny Survey",
-      nav_panel(title = "One", p("First page content."),
-                golem::golem_welcome_page())
+      nav_panel(title = "One", p("First page content.")),
+      nav_panel(
+        title = "two",
+        useShinyjs(),
+        # Use the data loader UI
+        upload_ui("test_loader")$data_loader
+      ),
+      nav_panel(
+        title = "Status",
+        # Elements moved into their own nav_panel
+        h4("Data Status:"),
+        # verbatimTextOutput("dataStatus"),
+        upload_ui("test_loader")$feedback
+      ),
+      # External resources should be in header
+      header = golem_add_external_resources()
     )
   )
 }
